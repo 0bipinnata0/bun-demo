@@ -1,0 +1,5 @@
+{
+  "name": "@kane/use-presence",
+  "module": "index.ts",
+  "type": "module"
+}

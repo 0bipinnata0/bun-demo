@@ -1,0 +1,5 @@
+{
+  "name": "@kane/timer",
+  "module": "index.ts",
+  "type": "module"
+}

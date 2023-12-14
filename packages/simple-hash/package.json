@@ -1,0 +1,5 @@
+{
+  "name": "@kane/simple-hash",
+  "module": "index.ts",
+  "type": "module"
+}

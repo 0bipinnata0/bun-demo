@@ -1,0 +1,5 @@
+{
+  "name": "@kane/react-native-use-responder-events",
+  "module": "index.ts",
+  "type": "module"
+}

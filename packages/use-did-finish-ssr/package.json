@@ -1,0 +1,5 @@
+{
+  "name": "@kane/use-did-finish-ssr",
+  "module": "index.ts",
+  "type": "module"
+}

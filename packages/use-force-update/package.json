@@ -1,0 +1,5 @@
+{
+  "name": "@kane/use-force-update",
+  "module": "index.ts",
+  "type": "module"
+}

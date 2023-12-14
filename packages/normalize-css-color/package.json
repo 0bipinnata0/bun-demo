@@ -1,0 +1,5 @@
+{
+  "name": "@kane/normalize-css-color",
+  "module": "index.ts",
+  "type": "module"
+}

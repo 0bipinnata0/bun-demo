@@ -1,0 +1,9 @@
+{
+  "name": "@kane/animations-react-native",
+  "module": "index.tsx",
+  "type": "module",
+  "sideEffects": [
+    "polyfill.js"
+  ],
+  "license": "MIT"
+}
