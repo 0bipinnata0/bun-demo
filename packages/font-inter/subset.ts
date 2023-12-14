@@ -52,7 +52,6 @@ const base = [
 ].map((f) => `Inter-${f}`);
 const italics = base.slice(2).map((b) => `${b}Italic`);
 
-console.info("执行********************");
 const inputFiles = [...base, ...italics].map((f) => join("tmp", `${f}.otf`));
 
 subset({

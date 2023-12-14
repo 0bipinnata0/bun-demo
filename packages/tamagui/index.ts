@@ -1,5 +1,46 @@
 import "./src/setup";
-export * from "@kane/use-force-update";
+
+// export * from '@kane/accordion'
+// export * from '@kane/adapt'
+// export * from '@kane/alert-dialog'
+// export * from '@kane/animate-presence'
+// export * from '@kane/avatar'
+export * from "@kane/button";
+// export * from '@kane/card'
+// export * from '@kane/checkbox'
+export * from "@kane/compose-refs";
+export * from "@kane/create-context";
+// export * from '@kane/dialog'
+export * from "@kane/font-size";
+// export * from '@kane/form'
+export * from "@kane/group";
+export * from "@kane/helpers-tamagui";
+// export * from '@kane/image'
+// export * from '@kane/label'
+// export * from '@kane/list-item'
+// export * from '@kane/popover'
+// export * from '@kane/popper'
+export * from "@kane/portal";
+// export * from '@kane/progress'
+// export * from '@kane/radio-group'
+// export * from '@kane/scroll-view'
+// export * from '@kane/select'
+// export * from '@kane/separator'
+// export * from '@kane/shapes'
+// export * from '@kane/sheet'
+// export * from '@kane/slider'
+export * from "@kane/stacks";
+// export * from '@kane/switch'
+// export * from '@kane/tabs'
+export * from "@kane/text";
+// export * from '@kane/theme'
+// export * from '@kane/toggle-group'
+// export * from '@kane/tooltip'
+// export * from '@kane/use-controllable-state'
+// export * from '@kane/use-debounce'
+// export * from '@kane/use-force-update'
+// export * from '@kane/use-window-dimensions'
+// export * from '@kane/visually-hidden'
 
 export * from "./src/createTamagui";
 
@@ -15,11 +56,13 @@ export * from "./src/views/Spinner";
 export * from "./src/views/TextArea";
 export * from "./src/views/Text";
 
+// since we overlap with StackProps and potentially others
+// lets be explicit on what gets exported
 export type {
 	AnimationKeys,
 	ColorTokens,
-	CreateTamaguiConfig,
-	CreateTamaguiProps,
+	CreatekaneConfig,
+	CreatekaneProps,
 	FontColorTokens,
 	FontLanguages,
 	FontLetterSpacingTokens,
@@ -31,7 +74,7 @@ export type {
 	FontWeightTokens,
 	GenericFont,
 	GenericStackVariants,
-	GenericTamaguiConfig,
+	GenerickaneConfig,
 	GenericTextVariants,
 	GetAnimationKeys,
 	GetProps,
@@ -54,16 +97,16 @@ export type {
 	RadiusTokens,
 	StaticConfig,
 	Styleable,
-	TamaguiBaseTheme,
-	TamaguiComponent,
-	TamaguiComponentPropsBase,
-	TamaguiConfig,
-	TamaguiCustomConfig,
-	TamaguiElement,
-	TamaguiInternalConfig,
-	TamaguiProviderProps,
-	TamaguiSettings,
-	TamaguiTextElement,
+	kaneBaseTheme,
+	kaneComponent,
+	kaneComponentPropsBase,
+	kaneConfig,
+	kaneCustomConfig,
+	kaneElement,
+	kaneInternalConfig,
+	kaneProviderProps,
+	kaneSettings,
+	kaneTextElement,
 	TextNonStyleProps,
 	TextProps,
 	TextPropsBase,
@@ -117,8 +160,8 @@ export {
 	isChrome,
 	isClient,
 	isServer,
-	isTamaguiComponent,
-	isTamaguiElement,
+	iskaneComponent,
+	iskaneElement,
 	isTouchable,
 	isVariable,
 	isWeb,

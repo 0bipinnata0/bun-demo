@@ -21,11 +21,10 @@ export const createInterFont = <A extends GenericFont>(
 			...font.size,
 		}).map(([k, v]) => [k, sizeSize(+v)]),
 	);
-	console.info("isWeb", isWeb);
 	return createFont({
 		family: isWeb
 			? 'Inter, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
-			: "Inter",
+			: "",
 		lineHeight: Object.fromEntries(
 			Object.entries(size).map(([k, v]) => [
 				k,
