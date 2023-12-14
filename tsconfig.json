@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "types": ["node", "react"],
+    "types": [
+      "node",
+      "react",
+      "bun-types" // add Bun global
+    ],
     "lib": ["dom", "esnext"]
   },
   "extends": "expo/tsconfig.base"

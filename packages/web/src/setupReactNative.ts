@@ -8,7 +8,7 @@ const ReactNativeStaticConfigs = new WeakMap<
 export function getReactNativeConfig(Component: any) {
 	if (!Component) return;
 
-	if (process.env.TAMAGUI_TARGET === "native") {
+	if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native") {
 		if (Component.propTypes?.onTextInput || Component.propTypes?.onChangeText) {
 			return RNConfigs.TextInput;
 		}

@@ -100,7 +100,7 @@ export class ThemeManager {
 			this["_numChangeEventsSent"]++;
 		}
 		if (shouldNotify) {
-			if (process.env.TAMAGUI_TARGET === "native") {
+			if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native") {
 				// native is way slower with queueMicrotask
 				this.notify();
 			} else {
@@ -141,7 +141,7 @@ export class ThemeManager {
 	getState(props = this.props, parentManager = this.parentManager) {
 		const next =
 			getState(props, parentManager) ||
-			(process.env.TAMAGUI_TARGET === "native"
+			(process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native"
 				? parentManager?.state || null
 				: null);
 		return next;

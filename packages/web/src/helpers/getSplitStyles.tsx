@@ -227,7 +227,7 @@ export const getSplitStyles: StyleSplitter = (
 	//   TODO the compiler should probably just leave things inline if its not flattening
 	//   that way it keeps merging order
 	if (
-		process.env.TAMAGUI_TARGET === "web" &&
+		process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web" &&
 		typeof props.className === "string"
 	) {
 		for (const cn of props.className.split(" ")) {
@@ -272,7 +272,7 @@ export const getSplitStyles: StyleSplitter = (
 		// keyInit === 'style' is handled in skipProps
 		if (keyInit in skipProps && !isHOC) {
 			if (keyInit === "group") {
-				if (process.env.TAMAGUI_TARGET === "web") {
+				if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web") {
 					// add container style
 					const identifier = `t_group_${valInit}`;
 					const containerType = conf.settings.webContainerType || "inline-size";
@@ -294,7 +294,7 @@ export const getSplitStyles: StyleSplitter = (
 		styleState.curProps[keyInit] = valInit;
 
 		// TODO this is duplicated! but seems to be fixing some bugs so leaving got now
-		if (process.env.TAMAGUI_TARGET === "web") {
+		if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web") {
 			if (valInitType === "string" && valInit[0] === "_") {
 				if (keyInit in validStyleProps || keyInit.includes("-")) {
 					if (process.env.NODE_ENV === "development" && debug) {
@@ -313,7 +313,7 @@ export const getSplitStyles: StyleSplitter = (
 			}
 		}
 
-		if (process.env.TAMAGUI_TARGET === "native") {
+		if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native") {
 			if (!isAndroid) {
 				// only works in android
 				if (keyInit === "elevationAndroid") continue;
@@ -374,7 +374,7 @@ export const getSplitStyles: StyleSplitter = (
 			continue;
 		}
 
-		if (process.env.TAMAGUI_TARGET === "web") {
+		if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web") {
 			if (!styleProps.noExpand) {
 				/**
 				 * Copying in the accessibility/prop handling from react-native-web here
@@ -647,7 +647,7 @@ export const getSplitStyles: StyleSplitter = (
 
 		// micro bench optimize
 		if (
-			process.env.TAMAGUI_TARGET === "native" &&
+			process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native" &&
 			isValidStyleKeyInit &&
 			!variants &&
 			valInit !== "unset" &&
@@ -904,7 +904,7 @@ export const getSplitStyles: StyleSplitter = (
 						// supports web, ios, android
 						platform !== currentPlatform &&
 						// supports web, native
-						platform !== process.env.TAMAGUI_TARGET
+						platform !== process.env.EXPO_PUBLIC_TAMAGUI_TARGET
 					) {
 						continue;
 					}
@@ -1094,7 +1094,7 @@ export const getSplitStyles: StyleSplitter = (
 				continue;
 			}
 
-			if (process.env.TAMAGUI_TARGET === "native") {
+			if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native") {
 				if (key === "pointerEvents") {
 					viewProps[key] = val;
 					continue;
@@ -1106,7 +1106,7 @@ export const getSplitStyles: StyleSplitter = (
 				// this fixes issues where style prop got merged with wrong priority
 				!isHOC &&
 				(key in validStyleProps ||
-					(process.env.TAMAGUI_TARGET === "native" &&
+					(process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native" &&
 						isAndroid &&
 						key === "elevation"))
 			) {
@@ -1175,7 +1175,7 @@ export const getSplitStyles: StyleSplitter = (
 				});
 
 			// Button for example uses disableClassName: true but renders to a 'button' element, so needs this
-			if (process.env.TAMAGUI_TARGET === "web") {
+			if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web") {
 				if (
 					!staticConfig.isReactNative &&
 					!styleProps.isAnimated &&
@@ -1188,7 +1188,7 @@ export const getSplitStyles: StyleSplitter = (
 
 		// add in defaults if not set:
 		if (parentSplitStyles) {
-			if (process.env.TAMAGUI_TARGET === "web") {
+			if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web") {
 				if (shouldDoClasses) {
 					for (const key in parentSplitStyles.classNames) {
 						const val = parentSplitStyles.classNames[key];
@@ -1206,7 +1206,7 @@ export const getSplitStyles: StyleSplitter = (
 		}
 	}
 
-	if (process.env.TAMAGUI_TARGET === "web") {
+	if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web") {
 		if (shouldDoClasses) {
 			let retainedStyles: ViewStyleWithPseudos | undefined;
 			let shouldRetain = false;
@@ -1340,7 +1340,7 @@ export const getSplitStyles: StyleSplitter = (
 	};
 
 	// native: swap out the right family based on weight/style
-	if (process.env.TAMAGUI_TARGET === "native") {
+	if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native") {
 		if (style.fontFamily) {
 			const faceInfo = getFont(style.fontFamily as string)?.face;
 			if (faceInfo) {
@@ -1405,7 +1405,7 @@ function mergeClassName(
 	isMediaOrPseudo = false,
 	isInsertingNow = false,
 ) {
-	if (process.env.TAMAGUI_TARGET === "web") {
+	if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web") {
 		// empty classnames passed by compiler sometimes
 		if (!val) return;
 		if (!isInsertingNow && val[0] === "_" && val.startsWith("_transform-")) {
@@ -1531,7 +1531,7 @@ function addStyleToInsertRules(
 	rulesToInsert: RulesToInsert,
 	styleObject: StyleObject,
 ) {
-	if (process.env.TAMAGUI_TARGET === "web") {
+	if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web") {
 		if (!shouldInsertStyleRules(styleObject.identifier)) {
 			return;
 		}
@@ -1596,7 +1596,7 @@ if (process.env.NODE_ENV === "test") {
 }
 
 // native only skips
-if (process.env.TAMAGUI_TARGET === "native") {
+if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native") {
 	Object.assign(skipProps, {
 		whiteSpace: 1,
 		wordWrap: 1,

@@ -94,7 +94,7 @@ export const configureMedia = (config: TamaguiInternalConfig) => {
 	initState = { ...mediaState };
 	mediaKeysOrdered = Object.keys(media);
 
-	if (config.disableSSR) {
+	if (config?.disableSSR) {
 		setupMediaListeners();
 	} else {
 		updateCurrentState();
@@ -146,7 +146,7 @@ export function setupMediaListeners() {
 }
 
 export function useMediaListeners(config: TamaguiInternalConfig) {
-	if (config.disableSSR) return;
+	if (config?.disableSSR) return;
 
 	useIsomorphicLayoutEffect(() => {
 		setupMediaListeners();

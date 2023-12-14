@@ -1,4 +1,4 @@
 export function getBaseViews() {
-  // empty
-  return null as any
+	// empty
+	return null as any;
 }

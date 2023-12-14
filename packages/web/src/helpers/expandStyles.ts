@@ -3,7 +3,7 @@ import { isWeb } from "@kane/constants";
 import { normalizeShadow } from "./normalizeShadow";
 
 export function fixStyles(style: Record<string, any>) {
-	if (process.env.TAMAGUI_TARGET === "native") {
+	if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native") {
 		if ("elevationAndroid" in style) {
 			// @ts-ignore
 			style["elevation"] = style.elevationAndroid;

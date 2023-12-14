@@ -8,7 +8,7 @@ import { isAndroid, isWeb } from "@kane/constants";
 import { PropMappedValue } from "../types";
 
 export function expandStyle(key: string, value: any): PropMappedValue {
-	if (process.env.TAMAGUI_TARGET === "web") {
+	if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web") {
 		if (key === "flex") {
 			return [
 				["flexGrow", value],
@@ -29,7 +29,7 @@ export function expandStyle(key: string, value: any): PropMappedValue {
 	}
 
 	if (
-		process.env.TAMAGUI_TARGET === "native" &&
+		process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native" &&
 		isAndroid &&
 		key === "elevationAndroid"
 	) {

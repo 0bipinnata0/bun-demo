@@ -25,7 +25,7 @@ export const Text = createComponent<TextProps, Text, TextPropsBase>({
 
 	defaultProps: {
 		fontFamily: "unset",
-		...(process.env.TAMAGUI_TARGET === "web"
+		...(process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web"
 			? defaultWebStyle
 			: {
 					suppressHighlighting: true,
@@ -35,7 +35,7 @@ export const Text = createComponent<TextProps, Text, TextPropsBase>({
 	inlineWhenUnflattened: new Set(["fontFamily"]),
 
 	variants: {
-		...(process.env.TAMAGUI_TARGET === "web" && {
+		...(process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web" && {
 			numberOfLines: {
 				1: ellipseStyle,
 
@@ -56,7 +56,7 @@ export const Text = createComponent<TextProps, Text, TextPropsBase>({
 			"...": () => null,
 		},
 
-		...(process.env.TAMAGUI_TARGET === "web" && {
+		...(process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web" && {
 			selectable: {
 				true: {
 					userSelect: "text",
@@ -71,7 +71,7 @@ export const Text = createComponent<TextProps, Text, TextPropsBase>({
 
 		ellipse: {
 			true:
-				process.env.TAMAGUI_TARGET === "web"
+				process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web"
 					? ellipseStyle
 					: {
 							numberOfLines: 1,
@@ -80,7 +80,9 @@ export const Text = createComponent<TextProps, Text, TextPropsBase>({
 		},
 	},
 
-	deoptProps: new Set(process.env.TAMAGUI_TARGET === "web" ? [] : ["ellipse"]),
+	deoptProps: new Set(
+		process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web" ? [] : ["ellipse"],
+	),
 
 	validStyles: {
 		...validStyles,

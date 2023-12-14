@@ -1,0 +1,5 @@
+{
+  "name": "@kane/theme-builder",
+  "module": "index.ts",
+  "type": "module"
+}

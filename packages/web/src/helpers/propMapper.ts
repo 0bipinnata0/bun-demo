@@ -24,7 +24,7 @@ export const propMapper: PropMapper = (
 	styleStateIn,
 	subPropsIn,
 ) => {
-	if (!(process.env.TAMAGUI_TARGET === "native" && isAndroid)) {
+	if (!(process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native" && isAndroid)) {
 		// this shouldnt be necessary and handled in the outer loop
 		if (key === "elevationAndroid") return;
 	}
@@ -524,13 +524,16 @@ function resolveVariableValue(
 		const get = valOrVar?.get;
 
 		// shadowColor doesn't support dynamic style
-		if (process.env.TAMAGUI_TARGET !== "native" || key !== "shadowColor") {
+		if (
+			process.env.EXPO_PUBLIC_TAMAGUI_TARGET !== "native" ||
+			key !== "shadowColor"
+		) {
 			if (typeof get === "function") {
 				return get(resolveValues === "web" ? "web" : undefined);
 			}
 		}
 
-		return process.env.TAMAGUI_TARGET === "native"
+		return process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native"
 			? valOrVar.val
 			: valOrVar.variable;
 	}

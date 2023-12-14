@@ -1,12 +1,15 @@
-import Text, { TamaguiProvider, createTamagui } from "@kane/web";
+import { config } from "@kane/config/v2";
 import React from "react";
-
-const config = createTamagui();
+import { SafeAreaView } from "react-native";
+import { TamaguiProvider, Text, createTamagui } from "tamagui";
+const tamaguiConfig = createTamagui(config);
 
 export default function App() {
 	return (
-		<TamaguiProvider config={undefined}>
-			<Text>abc</Text>
+		<TamaguiProvider config={tamaguiConfig}>
+			<SafeAreaView>
+				<Text color="red">abc</Text>
+			</SafeAreaView>
 		</TamaguiProvider>
 	);
 }

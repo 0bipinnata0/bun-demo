@@ -13,7 +13,7 @@ export function getThemeCSSRules(props: {
 }) {
 	const cssRuleSets: string[] = [];
 
-	if (process.env.TAMAGUI_TARGET === "native") {
+	if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native") {
 		return cssRuleSets;
 	} else if (
 		!process.env.TAMAGUI_DOES_SSR_CSS ||

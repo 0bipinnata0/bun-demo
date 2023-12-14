@@ -58,7 +58,7 @@ export const tokenCategories = {
 		borderStartColor: true,
 		shadowColor: true,
 		...textColors,
-		...(process.env.TAMAGUI_TARGET === "web" && {
+		...(process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web" && {
 			outlineColor: true,
 		}),
 	},
@@ -193,7 +193,7 @@ export const stylePropsView = {
 
 	// allow a few web only ones
 
-	...(process.env.TAMAGUI_TARGET === "web" && {
+	...(process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web" && {
 		// RN doesn't support specific border styles per-edge
 		borderBottomStyle: true,
 		borderTopStyle: true,
@@ -236,7 +236,7 @@ export const stylePropsTextOnly = {
 	textShadowRadius: true,
 
 	// allow some web only ones
-	...(process.env.TAMAGUI_TARGET === "web" && {
+	...(process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web" && {
 		whiteSpace: true,
 		wordWrap: true,
 		textOverflow: true,

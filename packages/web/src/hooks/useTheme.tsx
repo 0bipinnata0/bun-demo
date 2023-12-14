@@ -202,7 +202,7 @@ export function getThemeProxied(
 								return (platform?: "web") => {
 									const outVal = getVariable(val);
 
-									if (process.env.TAMAGUI_TARGET === "native") {
+									if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native") {
 										// ios can avoid re-rendering in some cases when we are using a root light/dark
 										// disabled in cases where we have animations
 										if (
@@ -265,7 +265,7 @@ export function getThemeProxied(
 
 // to tell if we are inversing the scheme anywhere in the tree, if so we need to de-opt
 function someParentIsInversed(manager?: ThemeManager) {
-	if (process.env.TAMAGUI_TARGET === "native") {
+	if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native") {
 		let cur: ThemeManager | null | undefined = manager;
 		while (cur) {
 			if (!cur.parentManager) return false;
@@ -378,7 +378,7 @@ export const useChangeThemeEffect = (
 						shouldUpdate?.() ||
 						props.deopt ||
 						// this fixes themeable() not updating with the new fastSchemeChange setting
-						(process.env.TAMAGUI_TARGET === "native"
+						(process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native"
 							? props["disable-child-theme"]
 							: undefined);
 

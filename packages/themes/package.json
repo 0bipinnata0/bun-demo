@@ -1,0 +1,5 @@
+{
+  "name": "@kane/themes",
+  "module": "index.tsx",
+  "type": "module"
+}

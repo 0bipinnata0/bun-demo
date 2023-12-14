@@ -72,7 +72,7 @@ import { useThemedChildren } from "./views/Theme";
 import { ThemeDebug } from "./views/ThemeDebug";
 
 // this appears to fix expo / babel not picking this up sometimes? really odd
-process.env.TAMAGUI_TARGET;
+process.env.EXPO_PUBLIC_TAMAGUI_TARGET;
 
 /**
  * All things that need one-time setup after createTamagui is called
@@ -211,7 +211,7 @@ export function createComponent<
 				}
 			}
 
-			if (process.env.TAMAGUI_TARGET === "native") {
+			if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native") {
 				// todo this could be moved to a cleaner location
 				if (!hasSetupBaseViews) {
 					hasSetupBaseViews = true;
@@ -534,7 +534,7 @@ export function createComponent<
 
 			// internal use only
 			const disableThemeProp =
-				process.env.TAMAGUI_TARGET === "native"
+				process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native"
 					? false
 					: props["data-disable-theme"];
 			const disableTheme = (disableThemeProp && !willBeAnimated) || isHOC;
@@ -560,7 +560,7 @@ export function createComponent<
 			}
 
 			// on native we optimize theme changes if fastSchemeChange is enabled, otherwise deopt
-			if (process.env.TAMAGUI_TARGET === "native") {
+			if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native") {
 				themeStateProps.deopt = willBeAnimated;
 			}
 
@@ -704,9 +704,9 @@ export function createComponent<
 			const isAnimatedReactNativeWeb = hasAnimationProp && isReactNative;
 
 			if (process.env.NODE_ENV === "development") {
-				if (!process.env.TAMAGUI_TARGET) {
+				if (!process.env.EXPO_PUBLIC_TAMAGUI_TARGET) {
 					console.error(
-						`No process.env.TAMAGUI_TARGET set, please set it to "native" or "web".`,
+						`No process.env.EXPO_PUBLIC_TAMAGUI_TARGET set, please set it to "native" or "web".`,
 					);
 				}
 
@@ -852,7 +852,7 @@ export function createComponent<
 
 			// if react-native-web view just pass all props down
 			if (
-				process.env.TAMAGUI_TARGET === "web" &&
+				process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web" &&
 				!isReactNative &&
 				!willBeAnimated &&
 				!asChild
@@ -890,7 +890,7 @@ export function createComponent<
 					pressIn: false,
 				});
 
-			if (process.env.TAMAGUI_TARGET === "web") {
+			if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web") {
 				// needs to be referentially stable for web as we add to mouseUps
 				unPress = useCallback(unPress, []);
 			}
@@ -974,7 +974,7 @@ export function createComponent<
 
 			let className: string | undefined;
 
-			if (process.env.TAMAGUI_TARGET === "web") {
+			if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web") {
 				// TODO this could be moved into getSplitStyles right?
 				// const fromTheme = getThemeCNStyle(themeState)
 
@@ -1126,12 +1126,12 @@ export function createComponent<
 										// @ts-ignore
 										isWeb && onClick?.(e);
 										onPress?.(e);
-										if (process.env.TAMAGUI_TARGET === "web") {
+										if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web") {
 											onLongPress?.(e);
 										}
 								  }
 								: undefined,
-							...(process.env.TAMAGUI_TARGET === "native" &&
+							...(process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native" &&
 								attachPress &&
 								onLongPress && {
 									onLongPress: (e) => {
@@ -1156,7 +1156,11 @@ export function createComponent<
 					  }
 					: null;
 
-			if (process.env.TAMAGUI_TARGET === "native" && events && !asChild) {
+			if (
+				process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native" &&
+				events &&
+				!asChild
+			) {
 				// replicating TouchableWithoutFeedback
 				Object.assign(events, {
 					cancelable: !viewProps.rejectResponderTermination,
@@ -1170,7 +1174,11 @@ export function createComponent<
 				});
 			}
 
-			if (process.env.TAMAGUI_TARGET === "web" && events && !isReactNative) {
+			if (
+				process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web" &&
+				events &&
+				!isReactNative
+			) {
 				Object.assign(viewProps, getWebEvents(events));
 			}
 
@@ -1214,7 +1222,7 @@ export function createComponent<
 			if (asChild) {
 				elementType = Slot;
 				// on native this is already merged into viewProps in hooks.useEvents
-				if (process.env.TAMAGUI_TARGET === "web") {
+				if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web") {
 					const webStyleEvents =
 						asChild === "web" || asChild === "except-style-web";
 					const passEvents = getWebEvents(
@@ -1308,7 +1316,7 @@ export function createComponent<
 				);
 			}
 
-			if (process.env.TAMAGUI_TARGET === "web") {
+			if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web") {
 				if (isReactNative) {
 					content = (
 						<span

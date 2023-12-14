@@ -21,7 +21,7 @@ export const normalizeColor = (color?: string | null, opacity?: number) => {
 	if (process.env.NODE_ENV === "development") {
 		console.warn(`Unknown color value: ${color}`);
 	}
-	if (process.env.TAMAGUI_TARGET === "native") {
+	if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native") {
 		// avoids errors
 		return;
 	}

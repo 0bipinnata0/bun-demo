@@ -1,7 +1,8 @@
 import { useReducer } from "react";
 
 export const isServerSide =
-	process.env.TAMAGUI_TARGET === "web" && typeof window === "undefined";
+	process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "web" &&
+	typeof window === "undefined";
 
 const idFn = () => {};
 

@@ -4,7 +4,7 @@ const emptyFn = () => {};
 const emptyFnFn = () => emptyFn;
 
 export function useDidFinishSSR<A = boolean>(value?: A): A | false {
-	if (process.env.TAMAGUI_TARGET === "native") {
+	if (process.env.EXPO_PUBLIC_TAMAGUI_TARGET === "native") {
 		// @ts-expect-error
 		return value ?? true;
 	}
