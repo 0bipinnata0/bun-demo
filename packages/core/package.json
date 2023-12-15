@@ -1,5 +1,3 @@
 {
-  "name": "@kane/core",
-  "module": "index.tsx",
-  "type": "module"
+  "name": "@kane/core"
 }

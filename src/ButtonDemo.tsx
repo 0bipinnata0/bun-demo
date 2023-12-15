@@ -1,15 +1,13 @@
 import { Activity, Airplay } from "@kane/lucide-icons";
 
 import { Button, XGroup, XStack, YStack } from "tamagui";
-export function ButtonDemo(props) {
+export function ButtonDemo() {
 	return (
-		<YStack padding="$3" space="$3" {...props}>
-			<Button>Plain</Button>
-
-			<Button alignSelf="center" icon={Airplay} size="$6">
+		<YStack padding="$3" space="$3">
+			<Button onPress={()=>{console.info('hello')}}>Plain</Button>
+			<Button alignSelf="center" icon={Airplay} size="$6" >
 				Large
 			</Button>
-
 			<XStack space="$2" justifyContent="center">
 				<Button size="$3" theme="active">
 					Active
@@ -24,12 +22,10 @@ export function ButtonDemo(props) {
 				<Button themeInverse size="$3">
 					Inverse
 				</Button>
-
 				<Button iconAfter={Activity} size="$3">
 					iconAfter
 				</Button>
 			</XStack>
-
 			<XGroup>
 				<XGroup.Item>
 					<Button width="50%" size="$2" disabled opacity={0.5}>
